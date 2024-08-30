@@ -1,33 +1,19 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const navbar = document.getElementById('navbar');
+// A/B Test Group Assignment
+function assignGroup() {
+    return Math.random() < 0.5 ? 'A' : 'B';
+}
 
-    // Initialize Mojito
-    Mojito.initialize({
-        experimentId: 'your-experiment-id',
-        onGroupSelected: (group) => {
-            if (group === 'A') {
-                renderTopNavbar(navbar);
-            } else if (group === 'B') {
-                renderVerticalNavbar(navbar);
-            }
-        }
-    });
+const userGroup = assignGroup();
+const navbar = document.getElementById('navbar');
 
-    function renderTopNavbar(navbar) {
-        navbar.classList.add('navbar-top');
-        navbar.innerHTML = `
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-        `;
-    }
+// Modify the navbar based on user group
+if (userGroup === 'B') {
+    navbar.classList.remove('top-nav');
+    navbar.classList.add('left-nav');
+}
 
-    function renderVerticalNavbar(navbar) {
-        navbar.classList.add('navbar-vertical');
-        navbar.innerHTML = `
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-        `;
-    }
-});
+// Tracking function
+function trackEvent(eventName) {
+    console.log(`Event Tracked: ${eventName}`);
+    // Send event to analytics server or Mojito here
+}
