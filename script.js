@@ -1,14 +1,6 @@
 // Function to create the navbar
 function createNavbar(test) {
     const navbar = document.getElementById('navbar');
-    navbar.innerHTML = `
-        <ul>
-            <li><a href="#" onclick="loadPage('home')">Home</a></li>
-            <li><a href="#" onclick="loadPage('about')">About</a></li>
-            <li><a href="#" onclick="loadPage('contact')">Contact</a></li>
-        </ul>
-    `;
-
     // Apply the navbar style based on the active recipe
     if (test.recipeId === '0') {
         // Control group - top navbar
