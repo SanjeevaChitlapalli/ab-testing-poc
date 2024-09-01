@@ -7,10 +7,13 @@
     <link rel="stylesheet" href="styles.css">
     <script src="path-to-mojito-js-delivery.js"></script>
     <script>
-        // Initialize Mojito JS Delivery
+        // Initialize Mojito and define the experiment trigger
         Mojito.init({
-            experimentId: 'your-experiment-id',
-            // Additional configuration if required
+            experimentId: 'navbar-test',
+            onReady: function(test) {
+                createNavbar(test);  // Pass the test object to createNavbar
+                loadPage('home');
+            }
         });
     </script>
 </head>

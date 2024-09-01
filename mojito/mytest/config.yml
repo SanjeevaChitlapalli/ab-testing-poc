@@ -1,0 +1,19 @@
+# mojito/mytest/config.yml
+
+css: shared.css  # Include shared CSS for styling
+id: mytest  # Experiment ID
+name: My example test  # Experiment name
+sampleRate: 1  # Include all traffic in the experiment
+state: live  # Set the experiment to be live
+trigger: trigger.js  # JavaScript file to trigger the experiment
+recipes:
+  0:
+    name: Control
+    sampleRate: 0.5  # 50% of users will see this variant
+  1:
+    name: Treatment1
+    js: treatment1.js  # JavaScript for Treatment1
+    sampleRate: 0.5  # 50% of users will see this variant
+  2:
+    name: Treatment2
+    js: treatment2.js  # JavaScript for Treatment2
