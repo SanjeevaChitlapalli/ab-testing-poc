@@ -40,14 +40,35 @@ function loadPage(page) {
 // Function to track CTA clicks
 function trackCTA(ctaId) {
     console.log(`CTA clicked: ${ctaId}`);
-    // Here you would typically send this data to your analytics service
+    Mojito.trackEvent('CTA Click', { ctaId: ctaId });
 }
 
 // Function to track page views
 function trackPageView(page) {
     console.log(`Page viewed: ${page}`);
-    // Here you would typically send this data to your analytics service
+    Mojito.trackEvent('Page View', { page: page });
 }
+
+// Function to load external JS files dynamically
+function loadScript(url, callback){
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = url;
+    script.onload = callback;
+    document.head.appendChild(script);
+}
+
+// Load the trigger script
+loadScript('mojito/ex2/trigger.js', function() {
+    var test = {
+        activate: function() {
+            loadScript('mojito/ex2/1.js', function() {
+                treatment();
+            });
+        }
+    };
+    trigger(test);
+});
 
 // Initialize the page
 createNavbar();
