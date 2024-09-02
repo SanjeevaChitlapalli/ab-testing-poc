@@ -7,24 +7,15 @@
     <link rel="stylesheet" href="styles.css">
     <script src="path-to-mojito-js-delivery.js"></script>
     <script>
-        // Initialize Mojito and define the experiment trigger
+        // Initialize Mojito JS Delivery
         Mojito.init({
-            experimentId: 'navbar-test',
-            onReady: function(test) {
-                createNavbar(test);  // Pass the test object to createNavbar
-                loadPage('home');
-            }
+            experimentId: 'your-experiment-id',
+            // Additional configuration if required
         });
     </script>
 </head>
 <body>
-    <nav id="navbar">
-        <ul>
-            <li><a href="#" onclick="loadPage('home')">Home</a></li>
-            <li><a href="#" onclick="loadPage('about')">About</a></li>
-            <li><a href="#" onclick="loadPage('contact')">Contact</a></li>
-        </ul>
-    </nav>
+    <nav id="navbar"></nav>
     <div id="content">
         <h1>Welcome to our A/B Testing Website</h1>
         <p>This is the main content area. The navbar position changes based on the A/B test group.</p>

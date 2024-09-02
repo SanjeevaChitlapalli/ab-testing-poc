@@ -1,0 +1,11 @@
+state: live
+sampleRate: 1
+id: ex2
+name: Google message straight JS
+recipes:
+  '0':
+    name: Control
+  '1':
+    name: Treatment
+    js: 1.js
+trigger: trigger.js

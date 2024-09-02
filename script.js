@@ -1,13 +1,20 @@
+// Simulating A/B test group assignment
+const isGroupA = Math.random() < 0.5;
+
 // Function to create the navbar
-function createNavbar(test) {
+function createNavbar() {
     const navbar = document.getElementById('navbar');
-    // Apply the navbar style based on the active recipe
-    if (test.recipeId === '0') {
-        // Control group - top navbar
+    navbar.innerHTML = `
+        <ul>
+            <li><a href="#" onclick="loadPage('home')">Home</a></li>
+            <li><a href="#" onclick="loadPage('about')">About</a></li>
+            <li><a href="#" onclick="loadPage('contact')">Contact</a></li>
+        </ul>
+    `;
+    if (isGroupA) {
         navbar.className = 'top-nav';
         document.body.classList.remove('side-nav-body');
-    } else if (test.recipeId === '1') {
-        // Treatment group - side navbar
+    } else {
         navbar.className = 'side-nav';
         document.body.classList.add('side-nav-body');
     }
@@ -41,3 +48,28 @@ function trackPageView(page) {
     console.log(`Page viewed: ${page}`);
     Mojito.trackEvent('Page View', { page: page });
 }
+
+// Function to load external JS files dynamically
+function loadScript(url, callback){
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = url;
+    script.onload = callback;
+    document.head.appendChild(script);
+}
+
+// Load the trigger script
+loadScript('mojito/ex2/trigger.js', function() {
+    var test = {
+        activate: function() {
+            loadScript('mojito/ex2/1.js', function() {
+                treatment();
+            });
+        }
+    };
+    trigger(test);
+});
+
+// Initialize the page
+createNavbar();
+loadPage('home');
