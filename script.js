@@ -1,24 +1,24 @@
 // Simulating A/B test group assignment
-const isGroupA = Math.random() < 0.5;
+// const isGroupA = Math.random() < 0.5;
 
-// Function to create the navbar
-function createNavbar() {
-    const navbar = document.getElementById('navbar');
-    navbar.innerHTML = `
-        <ul>
-            <li><a href="#" onclick="loadPage('home')">Home</a></li>
-            <li><a href="#" onclick="loadPage('about')">About</a></li>
-            <li><a href="#" onclick="loadPage('contact')">Contact</a></li>
-        </ul>
-    `;
-    if (isGroupA) {
-        navbar.className = 'top-nav';
-        document.body.classList.remove('side-nav-body');
-    } else {
-        navbar.className = 'side-nav';
-        document.body.classList.add('side-nav-body');
-    }
-}
+// // Function to create the navbar
+// function createNavbar() {
+//     const navbar = document.getElementById('navbar');
+//     navbar.innerHTML = `
+//         <ul>
+//             <li><a href="#" onclick="loadPage('home')">Home</a></li>
+//             <li><a href="#" onclick="loadPage('about')">About</a></li>
+//             <li><a href="#" onclick="loadPage('contact')">Contact</a></li>
+//         </ul>
+//     `;
+//     if (isGroupA) {
+//         navbar.className = 'top-nav';
+//         document.body.classList.remove('side-nav-body');
+//     } else {
+//         navbar.className = 'side-nav';
+//         document.body.classList.add('side-nav-body');
+//     }
+// }
 
 // Function to load page content
 function loadPage(page) {
@@ -71,5 +71,5 @@ loadScript('mojito/ex2/trigger.js', function() {
 });
 
 // Initialize the page
-createNavbar();
+// createNavbar();
 loadPage('home');
